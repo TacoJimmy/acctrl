@@ -11,7 +11,7 @@ def AC_PowerONOFF(PORT,ID,mode):
         master.set_timeout(5.0)
         master.set_verbose(True)
         AC_status = master.execute(ID, cst.READ_HOLDING_REGISTERS, 0, 1)
-        time.sleep(0.5)
+        time.sleep(1)
         i = 0
         while AC_status[0] != mode and i < 5:
             Power_ON = master.execute(ID, cst.WRITE_SINGLE_REGISTER, 0, output_value=mode)
@@ -32,7 +32,7 @@ def AC_OPset(PORT,ID,mode): # Operaction  mode = (0=AC,1=humidi, 2=fan only)
         master = modbus_rtu.RtuMaster(serial.Serial(port=PORT, baudrate=9600, bytesize=8, parity='N', stopbits=1, xonxoff=0))
         master.set_timeout(5.0)
         master.set_verbose(True)
-        AC_OP = master.execute(ID, cst.READ_HOLDING_REGISTERS, 1, 1) #Åª¨ú§N®ð¹BÂà¼Ò¦¡
+        AC_OP = master.execute(ID, cst.READ_HOLDING_REGISTERS, 1, 1) 
         time.sleep(0.5)
         i = 0
         while AC_OP[0] != mode and i < 5:
@@ -169,16 +169,21 @@ def AC_error(PORT,ID): # (value 0=on/off, 1=op mode, 2=fan speed, 3=set temp, 4=
     AC_error = master.execute(ID, cst.READ_HOLDING_REGISTERS, 514, 1)
     return AC_error        
 
-
 while True:
     
-    print(AC_PowerONOFF('/dev/ttyS1',15,0))
+    print( AC_ReadFullFunction('/dev/ttyS1',15))
+    time.sleep(5)
+
+'''
+while True:
+    
+    print( AC_ReadFullFunction('/dev/ttyS1',15))
     time.sleep(5)
     
     print(AC_PowerONOFF('/dev/ttyS1',15,1))
     time.sleep(5)
 
-'''
+
 while True:
     print(AC_ReadFullFunction('COM10',3))
     time.sleep(5)
