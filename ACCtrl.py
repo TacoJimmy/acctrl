@@ -24,19 +24,7 @@ def AC_PowerONOFF(PORT,ID,mode):
     except:
         master.close()
         return ('loss_connect')
-    
-'''    
-def AC_fullctrl(PORT,ID,mode1=None,mode2=None,mode3=None,mode4=None,mode5=None):
-    try:
-        master = modbus_rtu.RtuMaster(serial.Serial(port=PORT, baudrate=9600, bytesize=8, parity='N', stopbits=1, xonxoff=0))
-        master.set_timeout(5.0)
-        master.set_verbose(True)
-        AC_status = master.execute(ID, cst.READ_HOLDING_REGISTERS, 0, 5)
-        time.sleep(0.5)
-        
-        master.execute(1, cst.WRITE_MULTIPLE_REGISTERS, 0, output_value = [mode1,mode2,mode3,mode4,mode5])
-        
-'''        
+          
     
 def AC_OPset(PORT,ID,mode): # Operaction  mode = (0=AC,1=humidi, 2=fan only) 
     try:
@@ -183,11 +171,11 @@ def AC_error(PORT,ID): # (value 0=on/off, 1=op mode, 2=fan speed, 3=set temp, 4=
 
 
 while True:
-    AC_PowerONOFF('/dev/ttyS4',15,0)
-    print("power off")
+    
+    print(AC_PowerONOFF('/dev/ttyS4',15,0))
     time.sleep(5)
-    AC_PowerONOFF('/dev/ttyS4',15,1)
-    print("power on")
+    
+    print(AC_PowerONOFF('/dev/ttyS4',15,1))
     time.sleep(5)
 
 '''
