@@ -14,6 +14,9 @@ def on_message(client, userdata, msg):
     data_topic = msg.topic
     data_payload = json.loads(msg.payload.decode())
     time.sleep(.5)
+    if data_payload['method'] == 'ACOnOff':
+        print(data_payload['params']['AC_Power'])
+    
     listtopic = data_topic.split("/")  
     signal_fb = 'v1/devices/me/rpc/response/'+str(listtopic[5]) # response topic
     fb_payload = {'good': 1}
