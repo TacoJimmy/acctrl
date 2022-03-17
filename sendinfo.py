@@ -4,6 +4,7 @@ import time
 import ACCtrl
 
 def on_publish():
+    print('check data')
     AC_Status = ACCtrl.AC_ReadFullFunction('/dev/ttyS1',15)
     print(AC_Status)
     print('check data')
