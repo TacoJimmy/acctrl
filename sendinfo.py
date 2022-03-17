@@ -4,7 +4,6 @@ import time
 import ACCtrl
 
 def on_publish():
-    
     AC_Status = ACCtrl.AC_ReadFullFunction('/dev/ttyS1',15)
     print(AC_Status)
     print(AC_Status[5])
@@ -16,8 +15,6 @@ def on_publish():
         #print (json.dumps(payload))
         client.publish("v1/devices/me/telemetry", json.dumps(payload))
         time.sleep(1)
-        
-
 
 while True:
     
