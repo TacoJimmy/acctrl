@@ -168,13 +168,13 @@ def AC_error(PORT,ID): # (value 0=on/off, 1=op mode, 2=fan speed, 3=set temp, 4=
             
     AC_error = master.execute(ID, cst.READ_HOLDING_REGISTERS, 514, 1)
     return AC_error        
-
+'''
 while True:
     
     print( AC_ReadFullFunction('/dev/ttyS1',15))
     time.sleep(5)
 
-'''
+
 while True:
     
     print( AC_ReadFullFunction('/dev/ttyS1',15))
