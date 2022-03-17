@@ -6,7 +6,7 @@ import ACCtrl
 def on_publish():
     AC_Status = ACCtrl.AC_ReadFullFunction('/dev/ttyS1',15)
     print(AC_Status)
-    print(AC_Status[5])
+    print('check data')
     if (AC_Status[5] == 1):
         print('send data')
         client = mqtt.Client()
