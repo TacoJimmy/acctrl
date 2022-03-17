@@ -19,13 +19,6 @@ a = [0,0,0,0,0,0,0]
 app = flask.Flask(__name__)
 manager = Manager(app)
 
-PWClast_status = 0
-PW_dem_flag = 0
-PW_dem_last = 0
-PW_demandcal_15m = 0
-PW_demandcal_1h = 0
-ts_last = 0
-
 
 
 class Config(object):
@@ -35,7 +28,7 @@ class Config(object):
             'func': '__main__:read_ACinfo',
             'args': (4, 5),
             'trigger': 'interval',
-            'seconds': 5
+            'seconds': 10
         }
     ]
 
