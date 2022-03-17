@@ -4,6 +4,7 @@ import codecs
 import json
 import paho.mqtt.client as mqtt
 import time
+import ACCtrl
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code"+str(rc))
@@ -15,8 +16,8 @@ def on_message(client, userdata, msg):
     data_payload = json.loads(msg.payload.decode())
     time.sleep(.5)
     if data_payload['method'] == 'ACOnOff':
-        print(data_payload['params']['AC_Power'])
-    
+        ACOnOff = (data_payload['params']['AC_Power'])
+        ACCtrl.AC_PowerONOFF('/dev/ttyS1',15,ACOnOff)
     listtopic = data_topic.split("/")  
     signal_fb = 'v1/devices/me/rpc/response/'+str(listtopic[5]) # response topic
     fb_payload = {'good': 1}
