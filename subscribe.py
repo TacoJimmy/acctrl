@@ -41,7 +41,9 @@ def ipc_subscribe():
 
     client.loop_forever()
 
+'''
 while True:
     
     ipc_subscribe()
     time.sleep(10)
+'''
