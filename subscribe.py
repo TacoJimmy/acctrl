@@ -18,6 +18,10 @@ def on_message(client, userdata, msg):
     if data_payload['method'] == 'ACOnOff':
         ACOnOff = (data_payload['params']['AC_Power'])
         ACCtrl.AC_PowerONOFF('/dev/ttyS1',15,ACOnOff)
+    if data_payload['method'] == 'SetTempValue':
+        TempSet = (data_payload['params'])
+        ACCtrl.AC_SetTemp('/dev/ttyS1',15,TempSet)
+    
     listtopic = data_topic.split("/")  
     signal_fb = 'v1/devices/me/rpc/response/'+str(listtopic[5]) # response topic
     fb_payload = {'good': 1}
