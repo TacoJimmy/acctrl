@@ -9,7 +9,6 @@ def on_publish():
     print(AC_Status)
     print(AC_Status[5])
     if (AC_Status[5] == 1):
-        print('send data')
         client = mqtt.Client()
         client.username_pw_set("GAruSGOZYNeLWtbGD9D5","xxxx")
         client.connect('thingsboard.cloud', 1883, 60)
