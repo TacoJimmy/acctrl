@@ -172,10 +172,10 @@ def AC_error(PORT,ID): # (value 0=on/off, 1=op mode, 2=fan speed, 3=set temp, 4=
 
 while True:
     
-    print(AC_PowerONOFF('/dev/ttyS4',15,0))
+    print(AC_PowerONOFF('/dev/ttyS1',15,0))
     time.sleep(5)
     
-    print(AC_PowerONOFF('/dev/ttyS4',15,1))
+    print(AC_PowerONOFF('/dev/ttyS1',15,1))
     time.sleep(5)
 
 '''
