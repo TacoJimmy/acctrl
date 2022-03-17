@@ -182,14 +182,13 @@ def AC_error(PORT,ID): # (value 0=on/off, 1=op mode, 2=fan speed, 3=set temp, 4=
     return AC_error        
 
 
-if __name__ == '__main__':
-    while True:
-        AC_PowerONOFF('/dev/ttyS4',15,0)
-        print("power off")
-        time.sleep(5)
-        AC_PowerONOFF('/dev/ttyS4',15,1)
-        print("power on")
-        time.sleep(5)
+while True:
+    AC_PowerONOFF('/dev/ttyS4',15,0)
+    print("power off")
+    time.sleep(5)
+    AC_PowerONOFF('/dev/ttyS4',15,1)
+    print("power on")
+    time.sleep(5)
 
 '''
 while True:
