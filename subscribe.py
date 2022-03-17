@@ -21,7 +21,7 @@ def on_message(client, userdata, msg):
     print(data_payload)
     client.publish(signal_fb,json.dumps(fb_payload)) # send respose
 
-def ipc_subscribe(token):
+def ipc_subscribe():
     meter_token = "GAruSGOZYNeLWtbGD9D5"
     meter_pass = ''
     url = 'thingsboard.cloud'
@@ -37,3 +37,8 @@ def ipc_subscribe(token):
 
 
     client.loop_forever()
+
+while True:
+    
+    ipc_subscribe()
+    time.sleep(10)
