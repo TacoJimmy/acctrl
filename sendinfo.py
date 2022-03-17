@@ -5,6 +5,7 @@ import ACCtrl
 
 def on_publish():
     AC_Status = ACCtrl.AC_ReadFullFunction('/dev/ttyS1',15)
+    print(AC_Status)
     if (AC_Status[5] == 1):
         client = mqtt.Client()
         client.username_pw_set("GAruSGOZYNeLWtbGD9D5","xxxx")
@@ -13,6 +14,7 @@ def on_publish():
         print (json.dumps(payload))
         client.publish("v1/devices/me/telemetry", json.dumps(payload))
         time.sleep(1)
+        print("send data")
 
 
 while True:
